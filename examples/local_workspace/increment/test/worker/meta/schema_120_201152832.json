@@ -1,0 +1,13 @@
+{
+  "Table": "worker",
+  "Schema": "test",
+  "Version": 1,
+  "TableVersion": 120,
+  "Query": "",
+  "Type": 0,
+  "TableColumns": [
+    {"ColumnName": "id", "ColumnType": "BIGINT"},
+    {"ColumnName": "name", "ColumnType": "VARCHAR"}
+  ],
+  "TableColumnsTotal": 2
+}

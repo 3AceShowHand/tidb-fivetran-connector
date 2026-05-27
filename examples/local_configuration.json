@@ -1,0 +1,5 @@
+{
+  "storage_uri": "file:examples/local_workspace",
+  "checkpoint_interval_rows": "10",
+  "enable_diagnostic_columns": "true"
+}

@@ -1,0 +1,19 @@
+[project]
+name = "ticdc-fivetran-connector"
+version = "0.1.0"
+description = "Fivetran Connector SDK source connector for TiCDC cloud storage sink data."
+readme = "TiCDC Fivetran Source Connector 设计文档.md"
+requires-python = ">=3.11"
+dependencies = [
+  "boto3==1.43.14",
+  "botocore==1.43.14",
+  "fivetran-connector-sdk>=2.8.1",
+  "sqlglot==30.8.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
