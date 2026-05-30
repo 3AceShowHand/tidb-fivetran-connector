@@ -1,8 +1,12 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ticdc-fivetran-connector"
 version = "0.1.0"
 description = "Fivetran Connector SDK source connector for TiCDC cloud storage sink data."
-readme = "TiCDC Fivetran Source Connector 设计文档.md"
+readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
   "boto3==1.43.14",
@@ -17,3 +21,22 @@ dev = ["pytest>=8.3"]
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+
+[tool.setuptools]
+py-modules = ["app", "config", "connector", "errors", "observability", "state", "type_mapping"]
+
+[tool.setuptools.packages.find]
+include = [
+  "deployer",
+  "deployer.*",
+  "fivetran",
+  "fivetran.*",
+  "increment",
+  "increment.*",
+  "metadata",
+  "metadata.*",
+  "snapshot",
+  "snapshot.*",
+  "storage",
+  "storage.*",
+]

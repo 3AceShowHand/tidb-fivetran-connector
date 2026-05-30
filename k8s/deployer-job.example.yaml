@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: tidb-fivetran-deployer-example
+spec:
+  backoffLimit: 2
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: deployer
+          image: 385595570414.dkr.ecr.us-east-1.amazonaws.com/tidb-fivetran-deployer:0.1.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: REQUEST_ID
+              value: req-example
+            - name: DESTINATION_NAME
+              value: tidb_snowflake
+            - name: CONNECTION_NAME
+              value: tidb_job_example
+            - name: CONNECTOR_NAME
+              value: tidb-fivetran-connector
+            - name: CONNECTOR_VERSION
+              value: 0.1.0
+            - name: PYTHON_VERSION
+              value: "3.13"
+            - name: FIVETRAN_API_KEY_BASE64
+              valueFrom:
+                secretKeyRef:
+                  name: tidb-fivetran-deployer-secret
+                  key: fivetran_api_key_b64
+            - name: CONNECTOR_CONFIG_JSON
+              valueFrom:
+                secretKeyRef:
+                  name: tidb-fivetran-deployer-secret
+                  key: connector_config_json
